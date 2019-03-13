@@ -92,7 +92,22 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // First, the global variable number is initialized with the number 30
+    // On line 62, the numberFunction is declared
+    // On line 82, the numberFunction is invoked so we go back up to line 62
+    // On line 63, the function scoped variable number is initialized with the number 75
+    // On line 65, the if conditional evaluates to true because number is currently equal to 75
+    // Inside the if conditional code block the block scoped variable number is initialized with the number 20
+    // Because number is declared with let inside the if block it is scoped inside of it and will not be available in the functional scope of numberFunction
+    // On line 69, number is currently 75 because of functional scope
+    // On line 71, the function newNumber is declared
+    // On line 77, the function newNumber is invoked so we go back up to line 71
+    // Inside the newNumber function, on line 72, the functionally scoped number variable inside numberFunction is reassigned to 64
+    // On line 74, number is currently 64
+    // We are now done invoking newNumber so we return to where we left off on line 77
+    // On line 79, number is still 64
+    // We are now done invoking numberFunction so we return to where we left off on line 82
+    // On line 84, number is 30. This is because we left the functional scope of numberFunction and are now in the global scope where number is 30
   },
 
   exerciseC() {
@@ -132,7 +147,26 @@ const scope = {
     return result;
 
     // Annotation:
-    // 
+    // First, the global variable greeting is initialized with the string 'Hello'
+    // On line 116, the function greetingFunction is declared
+    // We then skip down to line 134
+    // On line 136, the function greetingFunction is invoked
+    // We then go back up to line 116
+    // On line 117, the functionally scoped variable greeting is initialized with the sting 'Yo'
+    // On line 119, the if condition evaluates to true because greeting equals 'Yo'
+    // On line 120, the block scoped variable greeting is initialized with the string 'Howdy'
+    // This blocked scoped variable is not available anywhere else and will not change the functionally scoped variable declared on line 117
+    // On line 123, for log A greeting is currently 'Yo'
+    // On line 125, the function newPhrase is declared
+    // We then skip down to line 129
+    // On line 131, the function newPhrase is invoked
+    // The invocation of newPhrase causes us to go back up to line 125
+    // On line 126, the functionally scoped variable greeting that was declared on line 117 is reassigned to the string of 'Hey'
+    // On line 128, for log B greeting is currently 'Hey'
+    // We are now done invoking newPhrase so we return to where we left off on line 131
+    // On line 133, for log C greeting is 'Hey'
+    // We are now done invoking greetingFunction so we return to line 136
+    // On line 138, for log D greeting is 'Hello' because we are in the global scope
   },
 
   exerciseD() {
@@ -171,14 +205,33 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // First, the global variable greeting is initialized with the string 'howdy'
+    // On line 175, the function expression greetingGenerator is declared
+    // We then skip down to line 193
+    // On line 195, the function greetingGenerator is invoked
+    // We then go back up to line 175
+    // On line 176, the functionally scoped variable greeting is initialized with the sting 'hi'
+    // On line 178, the if condition evaluates to true because greeting equals 'hi'
+    // On line 179, the block scoped variable greeting is initialized with the string 'hello'
+    // This blocked scoped variable is not available anywhere else and will not change the functionally scoped variable declared on line 176
+    // On line 182, for log A greeting is currently 'hi'
+    // On line 184, the function expression newGreeting is declared
+    // We then skip down to line 188
+    // On line 190, the function newGreeting is invoked
+    // The invocation of newGreeting causes us to go back up to line 184
+    // On line 185, the functionally scoped variable greeting that was declared on line 176 is reassigned to the string of 'welcome'
+    // On line 187, for log B greeting is currently 'welcome'
+    // We are now done invoking newGreeting so we return to line 190
+    // On line 192, for log C greeting is 'welcome'
+    // We are now done invoking greetingGenerator so we return to line 195
+    // On line 197, for log D greeting is 'howdy' because we are in the global scope
   },
 
   exerciseE() {
     let name = 'Brittany';
 
     function sayName() {
-      let name = 'Pam';  // Nath
+      let name = 'Pam';
 
       if (name === 'Pam') {
         name = 'Nathaniel';
@@ -208,7 +261,22 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 231, the global variable name is initialized with the string 'Brittany'
+    // On line 233, the function sayName is declared
+    // We then skip down to line 247
+    // On line 249, log C name is currently 'Brittany'
+    // On line 251, the function sayName is invoked
+    // The invocation of sayName causes us to go back up to line 233
+    // On line 234, the functionally scoped variable name is initialized with the sting 'Pam'
+    // On line 236, the if condition evaluates to true because name equals 'Pam'
+    // On line 237, the variable name is reassigned to the string 'Nathaniel'
+    // On line 239, the if condition evaluates to true because name.length is greater than 0
+    // On line 240, the block scoped variable name is initialized with the string 'Brittany'
+    // but since this variable is blocked scoped it will not be accessible outside of the if block
+    // On line 243, log A name is currently 'Nathaniel'
+    // On line 246, log B name is still 'Nathaniel'
+    // We are now done invoking sayName so we return to line 251
+    // On line 253, log D name is 'Brittany' because we have left the functional scope of sayName and are back in global scope
   },
 
   exerciseF() {
