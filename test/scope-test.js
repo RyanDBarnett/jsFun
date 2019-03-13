@@ -20,7 +20,7 @@ describe("SCOPE", () => {
       D: "Paul"
     }]);
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
-  }), it.skip("exerciseB", () => {
+  }), it("exerciseB", () => {
     const e = JSON.stringify(scope.exerciseB()) == JSON.stringify([{
       A: 75
     }, {
@@ -31,7 +31,7 @@ describe("SCOPE", () => {
       D: 30
     }]);
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
-  }), it.skip("exerciseC", () => {
+  }), it("exerciseC", () => {
     const e = JSON.stringify(scope.exerciseC()) == JSON.stringify([{
       A: "Yo"
     }, {
@@ -42,7 +42,7 @@ describe("SCOPE", () => {
       D: "Hello"
     }]);
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
-  }), it.skip("exerciseD", () => {
+  }), it("exerciseD", () => {
     const e = JSON.stringify(scope.exerciseD()) == JSON.stringify([{
       A: "hi"
     }, {
@@ -53,7 +53,7 @@ describe("SCOPE", () => {
       D: "howdy"
     }]);
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
-  }), it.skip("exerciseE", () => {
+  }), it("exerciseE", () => {
     const e = JSON.stringify(scope.exerciseE()) == JSON.stringify([{
       C: "Brittany"
     }, {
@@ -64,7 +64,7 @@ describe("SCOPE", () => {
       D: "Brittany"
     }]);
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
-  }), it.skip("exerciseF", () => {
+  }), it("exerciseF", () => {
     const e = JSON.stringify(scope.exerciseF()) == JSON.stringify([{
       A: "Spot"
     }, {
@@ -77,7 +77,7 @@ describe("SCOPE", () => {
       E: "Biscuit"
     }]);
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
-  }), it.skip("exerciseG", () => {
+  }), it("exerciseG", () => {
     const e = JSON.stringify(scope.exerciseG()) == JSON.stringify([{
       A: "reference error"
     }, {

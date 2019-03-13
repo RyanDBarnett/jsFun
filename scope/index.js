@@ -1,8 +1,8 @@
 const scope = {
   exerciseA() {
     let personA = 'Paul';
-    let personB = 'Ben';
-    let personC = 'Tom';
+    let personB = 'CardiB';
+    let personC = 'Paul';
 
     function changePerson() {
       if (personA === 'Paul') {
@@ -41,7 +41,7 @@ const scope = {
     // First we initialize the global variable PersonA with the string 'Paul'
     // Next, we initialize the global variable PersonB with the string 'Ben'
     // Next, we initialize the global variable PersonC with the string 'Tom'
-    // Next, we declare a function called 'changePerson'
+    // Next, we declare a function called 'changePerson' and then skip down to line 26
     // Next, on line 28, we invoke the 'changePerson' function which brings us back up to line 8
     // On line 8 the if conditional is true so we execute the code inside the if block
     // Next, on line 9, because the var keyword isn't used a global variable is created called Person with the string 'CardiB'
@@ -122,11 +122,17 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'Yo'},
+      { B: 'Hey'},
+      { C: 'Hey'},
+      { D: 'Hello'}
+
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 
   },
 
   exerciseD() {
@@ -139,24 +145,29 @@ const scope = {
         let greeting = 'hello';
       }
 
-      // Log A: greeting
+      // Log A: greeting // hi
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
-        // Log B: greeting
+        // Log B: greeting // welcome
       };
 
       newGreeting();
 
-      // Log C: greeting
+      // Log C: greeting // welcome
     };
 
     greetingGenerator();
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'hi'},
+      { B: 'welcome'},
+      { C: 'welcome'},
+      { D: 'howdy'}
+    ];
     return result;
 
     // Annotation:
@@ -167,7 +178,7 @@ const scope = {
     let name = 'Brittany';
 
     function sayName() {
-      let name = 'Pam';
+      let name = 'Pam';  // Nath
 
       if (name === 'Pam') {
         name = 'Nathaniel';
@@ -176,19 +187,24 @@ const scope = {
           let name = 'Brittany';
         }
 
-        // Log A: name
+        // Log A: name // 2nd Nathaniel
       }
 
-      // Log B: name
+      // Log B: name // 3rd Nathaniel
     }
 
-    // Log C: name
+    // Log C: name // 1st Brittany
 
     sayName();
 
-    // Log D: name
+    // Log D: name // 4th Brittany
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { C: 'Brittany'},
+      { A: 'Nathaniel'},
+      { B: 'Nathaniel'},
+      { D: 'Brittany'}
+    ];
     return result;
 
     // Annotation:
@@ -196,34 +212,40 @@ const scope = {
   },
 
   exerciseF() {
-    var dog = 'Spot';
+    var dog = 'Spot'; // Biscuit
 
     function petDog() {
-      // Log A: dog
+      // Log A: dog // 1st Spot
 
-      if (dog === 'Spot') {
-        let dog = 'Fluffy';
-      }
+      // if (dog === 'Spot') {
+      //   let dog = 'Fluffy';
+      // }
 
       function rollOver() {
-        // Log B: dog
+        // Log B: dog // 2nd Spot
 
         dog = 'Biscuit';
 
-        // Log C: dog
+        // Log C: dog // 3rd Biscuit
 
       }
 
       rollOver();
 
-      // Log D: dog
+      // Log D: dog // 4th Biscuit
     }
 
     petDog();
 
-    // Log E: dog
+    // Log E: dog // 5th Biscuit
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'Spot'},
+      { B: 'Spot'},
+      { C: 'Biscuit'},
+      { D: 'Biscuit'},
+      { E: 'Biscuit'}
+    ];
     return result;
 
     // Annotation:
@@ -239,21 +261,26 @@ const scope = {
         var fruit = 'mango';
 
         if (fruit) {
-          // Log A: fruit
+          // Log A: fruit // reference error
           const fruit = 'strawberry';
         }
 
-        // Log B: fruit
+        // Log B: fruit // mango
       }
 
-      // Log C: fruit
+      // Log C: fruit // mango
     }
 
     eatFruit();
 
-    // Log D: fruit
+    // Log D: fruit // apple
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'reference error'},
+      { B: 'mango'},
+      { C: 'mango'},
+      { D: 'apple'}
+    ];
     return result;
 
     // Annotation:
