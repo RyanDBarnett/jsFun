@@ -285,9 +285,9 @@ const scope = {
     function petDog() {
       // Log A: dog // 1st Spot
 
-      // if (dog === 'Spot') {
-      //   let dog = 'Fluffy';
-      // }
+      if (dog === 'Spot') {
+        let dog = 'Fluffy';
+      }
 
       function rollOver() {
         // Log B: dog // 2nd Spot
@@ -317,7 +317,26 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 283, the global variable dog is initialized with the string 'Spot'
+    // On line 285, the function petDog is declared
+    // We then skip down to line 304
+    // On line 306, the function petDog is invoked
+    // The invocation of petDog causes us to go back up to line 285
+    // On line 286, log A dog is currently 'Spot'
+    // On line 288, the if condition evaluates to true because dog equals 'Spot'
+    // On line 289, the block scoped variable dog is initialized with the string 'Fluffy'
+    // but since this variable is blocked scoped it will not be accessible outside of the if block
+    // On line 292, the function rollOver is declared
+    // We then skip down to line 299
+    // On line 301, the function rollOver is invoked
+    // The invocation of rollOver causes us to go back up to line 292
+    // On line 293, log B dog is 'Spot'
+    // On line 295, the global variable dog is reassigned to 'Biscuit'
+    // On line 297, log C dog is 'Biscuit'
+    // We are now done invoking rollOver so we return to line 301
+    // On line 303, log D dog is 'Biscuit'
+    // We are now done invoking petDog so we return to line 306
+    // On line 308, log E dog is 'Biscuit'
   },
 
   exerciseG() {
@@ -352,7 +371,22 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 343, the global variable fruit is initialized with the string 'apple'
+    // On line 345, the function eatFruit is declared
+    // We then skip down to line 359
+    // On line 361, the function eatFruit is invoked
+    // The invocation of eatFruit causes us to go back up to line 345
+    // On line 347, the if condition evaluates to true because fruit does not equal 'kiwi' (fruit is currently undefined because the var fruit on line 348 is hoisted)
+    // On line 348, the function scoped variable fruit is initialized with the string 'mango'
+    // On line 350, the if condition evaluates to true because fruit is 'mango' which is a truthy value is Javascript
+    // On line 351, log A fruit is a 'reference error'
+    // The reference error is caused because on line 352 the block scoped variable fruit is declared with const
+    // Since it was declared with const Javascript knows that there is a blocked scoped variable named fruit so it will not go outside of the block and grab the functionally scoped variable fruit from line 348
+    // But since log A, on line 351, is above where const fruit is actually initialized, on line 352, this log resides in the temporal dead zone and we will get a reference error 
+    // On line 355, log B fruit is 'mango'
+    // On line 358, log C fruit is 'mango' because the var on 348 is functionally scoped
+    // We are now done invoking eatFruit so we return to line 361
+    // On line 363, log D fruit is 'apple' because we are back in the global scope
   },
 
   exerciseH() {
@@ -388,11 +422,44 @@ const scope = {
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A:  4},
+      { D:  9},
+      { E: 10},
+      { B:  9},
+      { C:  4}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 393, the global variable num is initialized with the number 6
+    // On line 395, the function expression fn1 is declared
+    // We then skip down to line 413
+    // On line 415, the function expression fn2 is declared
+    // We then skip down to line 421
+    // On line 423, the function fn1 is invoked
+    // The invocation of fn1 causes us to go back up to line 395
+    // On line 396, the functionally scoped variable num is initialized with the number 4
+    // On line 398, log A num is 4
+    // On line 400, the if condition evaluates to true because num is 4 which is less than 5
+    // On line 401, the block scoped variable num is initialized with the number 9
+    // On line 403, the function fn2 is invoked with num as an argument
+    // The invocation of fn2 causes us to go down to line 415
+    // On line 416, log D num is 9
+    // On line 418, the functionally scoped argument variable num is reassigned to itself plus 1 which in this case is 10
+    // On line 420, log E num is 10
+    // We are now done invoking fn2 so we return to line 403
+    // On line 405, the block scoped variable newNum is initialized with the variable num from line 401
+    // Because the num in fn2 is locally scoped to that function it did not change the num variable in fn1's if block (Also the num in fn1's if block can't be changed because it is a const)
+    // Since num wasn't changed newNum is 9
+    // On line 407, log B newNum is 9
+    // On line 410, newNum is reassigned to the value of 4 from the functionally scoped num variable from line 396
+    // It is important to note that the newNum variable is declared as a global variable
+    // This happens because newNum has not been defined in either fn1's function scope or the global scope
+    // So Javascript creates a new global variable called newNum
+    // A better option would be to put var or let in front of newNum on line 410 to prevent this variable from polluting the global namespace
+    // On line 412, log C newNum is 4
+    // We are now done invoking fn1 so we return to line 423
   },
 
   exerciseI() {
@@ -419,32 +486,71 @@ const scope = {
     eatSnack();
     // Log E: hunger
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 75},
+      { B:  0},
+      { C: 75},
+      { D: 80},
+      { A: 55},
+      { B:  0},
+      { C: 55},
+      { E: 55}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 466, the global variable hunger is initialized with the number 100
+    // On line 468, the function expression eatSnack is declared
+    // We then skip down to line 479
+    // On line 481, the function eatSnack is invoked
+    // The invocation of eatSnack causes us to go back up to line 468
+    // On line 469, the globally scoped variable hunger is reassigned to itself (100) minus 25 which is 75
+    // On line 470, log A hunger is 75
+    // On line 471, the function gorgeYourself is invoked
+    // This is possible because the function is hoisted from line 473
+    // The invocation of gorgeYourself causes us to go down to line 473
+    // On line 474, the functionally scoped variable hunger is initialized with the number 0
+    // On line 475, log B hunger is 0
+    // We are now done invoking gorgeYourself so we return to line 471
+    // We can skip the function declaration of gorgeYourself on 473 and go down to 476
+    // On line 478, log C hunger is 75 because we are referring to the global variable and not the local hunger variable in gorgeYourself
+    // We are now done invoking eatSnack so we return to line 481
+    // On line 483, the global variable hunger is reassigned to itself plus 5 which is 80
+    // On line 484, log D hunger is 80
+    // On line 486, the function eatSnack is invoked again
+    // The invocation of eatSnack causes us to go back up to line 468
+    // On line 469, the globally scoped variable hunger is reassigned to itself (80) minus 25 which is 55
+    // On line 470, we log A again and now hunger is 55
+    // On line 471, the function gorgeYourself is invoked
+    // The invocation of gorgeYourself causes us to go down to line 473
+    // On line 474, the functionally scoped variable hunger is initialized with the number 0
+    // On line 475, we log B again and hunger is 0
+    // We are now done invoking gorgeYourself so we return to line 471
+    // We skip over the gorgeYourself function declaration
+    // On line 478, we log C again and hunger is 55
+    // We are now done invoking eatSnack so we return to line 486
+    // On line 487, we log E and hunger is 55
   },
 
   exerciseJ() {
     let sandwich = 'ketchup sandwich';
 
-    // Log A: sandwich
+    // Log A: sandwich // ketchup sandwich
 
     const addChipotle = () => {
-      // Log B: toppings
+      // Log B: toppings // undefined
       var toppings = 'chipotle sauce';
 
       if (toppings === 'chipotle sauce') { 
         sandwich = 'not a mediocre sandwich';
       }
 
-      // Log C: sandwich
+      // Log C: sandwich // not a mediocre sandwich
     };
 
     const addCheese = () => {
       let cheeseTopping = 'gouda';
-      // Log D: cheeseTopping
+      // Log D: cheeseTopping // gouda
 
       const shesTheManReference = () => {
         amandaBynes = 'National Treasure';
@@ -460,11 +566,46 @@ const scope = {
     // Log E: sandwich
     // Log F: amandaBynes
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'ketchup sandwich'},
+      { D: 'gouda'},
+      { B: undefined},
+      { C: 'not a mediocre sandwich'},
+      { E: 'not a mediocre sandwich'},
+      { F: 'National Treasure'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 536, the global variable sandwich is initialized with the string 'ketchup sandwich'
+    // On line 538, log A the value of sandwich is ketchup sandwich
+    // On line 540, the function expression addChipotle is declared
+    // We then skip down to line 549
+    // On line 551, the function expression addCheese is declared
+    // We then skip down to line 560
+    // On line 562, the string 'kraft' is assigned to the global variable cheeseTopping
+    // On 563 the addCheese function is invoked
+    // The invocation of addCheese causes us to go back up to line 551
+    // On line 552, the functionally scoped variable cheeseTopping is initialized with the sting 'gouda'
+    // On line 553, log D the value of cheeseTopping is gouda
+    // On line 555, the function expression shesTheManReference is declared
+    // We then skip down to line 557
+    // On line 559, the function shesTheManReference is invoked
+    // The invocation of shesTheManReference causes us to go back up to line 555
+    // On line 556, we are trying to reassign the string 'National Treasure' but because amandaBynes is not defined anywhere amandaBynes is declared as a global variable
+    // We are now done invoking shesTheManReference so we return to line 559
+    // We are now done invoking addCheese so we return to line 563
+    // On line 565, the function addChipotle is invoked
+    // The invocation of addChipotle causes us to go back up to line 540
+    // On line 541, log B the value of topping is undefined
+    // This is because topping is hoisted to the top of the scope but it isn't initialized until line 542
+    // On line 542, the function scoped variable topping is initialized with the string 'chipotle sauce'
+    // On line 544, the if conditional evaluates to true because toppings is equal to chipotle sauce
+    // On line 545, the global variable sandwich's value is reassigned to the string of 'not a mediocre sandwich'
+    // On line 548, log C the value of sandwich is 'not a mediocre sandwich'
+    // We are now done invoking addChipotle so we return to line 565
+    // On line 566, log E the value of sandwich is 'not a mediocre sandwich'
+    // On line 567, log F the value of amandaBynes is 'National Treasure'
   },
 
   exerciseK() {
@@ -481,11 +622,23 @@ const scope = {
 
     // Log B: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 7},
+      { B: 7}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 612, the global variable num is initialized with the number 10
+    // On line 614, the function foo is declared
+    // We then skip down to line 619
+    // On line 621, the function foo is invoked
+    // The invocation of foo causes us to go back up to line 614
+    // On line 615, the if condition evaluates to true because num (10) is greater than 5
+    // On line 616, the value of the global variable num is reassigned to the number 7
+    // On line 618, log A the value of num is 7
+    // We are now done invoking foo so we return to line 621
+    // On line 623, log B the value of num is 7
   },
 
   exerciseL() {
