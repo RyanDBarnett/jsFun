@@ -24,7 +24,12 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.reduce( (names, cat) => {
+      if (cat.color === 'orange') {
+        names.push(cat.name);
+      }
+      return names;
+    }, []);
     return result;
 
     // Annotation:
