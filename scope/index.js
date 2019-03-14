@@ -654,19 +654,23 @@ const scope = {
           let grade = 97;
         }
 
-        // Log A: grade
+        // Log A: grade // 1st 95
       }
 
       addPoints();
 
-      // Log B: grade
+      // Log B: grade // 2nd 90
     }
 
     losePoints();
 
-    // Log C: grade
+    // Log C: grade // 3rd 90
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 95},
+      { B: 90},
+      { C: 90}
+    ];
     return result;
 
     // Annotation:
