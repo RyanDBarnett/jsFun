@@ -5,6 +5,7 @@ const context = {
     };
 
     class SpaceProbe {
+      
       constructor(title, classification) {
         this.title = title;
         this.classification = classification;
@@ -14,27 +15,29 @@ const context = {
 
     const ship = new SpaceProbe('voyager', 'classy');
 
-
     // What is the value of `this` when we call ship.fly()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Because the function expression fly is declared in the global scope using an ES6 arrow function the value of this is set when the function is declared.
+    // Since fly is declared in the global scope this refers to the global window object
+    // If an ES5 function declaration was used instead of a ES6 arrow function then the value of this would be set when the function is executed/invoked
+    // And then this would refer to the ship instance
   },
 
   exerciseB() {
     function fn() {
-      const value = 2;
       return this.value;
+      const value = 2;
     }
     
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // When we invoke fn() this is referring to the global window object
   },
 
   exerciseC() {
