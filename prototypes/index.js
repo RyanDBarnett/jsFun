@@ -39,7 +39,10 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort( (catA, catB) => {
+      return catA.age < catB.age;
+    });
+
     return result;
 
     // Annotation:
@@ -60,7 +63,20 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    function growUp(cat) {
+      cat.age = cat.age + 2;
+      return cat;
+    }
+
+    const result = kitties.map(growUp);
+
+    // const result = kitties.reduce( (cats, cat) => {
+    //   cat.age = cat.age + 2;
+    //   cats.push(cat);
+    //   console.log(cats);
+    //   return cats;
+    // }, []);
+
     return result;
   }
 };
@@ -91,8 +107,15 @@ const clubPrompts = {
     //   Pam: ['Drama', 'Art', 'Chess'],
     //   ...etc
     // }
+    let result = {};
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    clubs.forEach( obj => {
+      let clubName = obj.club;
+      obj.members.forEach( member => {
+        result[member] ? result[member].push(obj.club) : result[member] = [clubName];
+      });
+    });
+
     return result;
 
     // Annotation:
