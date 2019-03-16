@@ -214,9 +214,12 @@ const cakePrompts = {
     // },
     // ..etc
     // ]
+    return cakes.filter(function(cake) {
+      return cake.inStock;
+    });
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    // const result = 'REPLACE WITH YOUR RESULT HERE';
+    // return result;
 
     // Annotation:
     // Write your annotation here as a comment
