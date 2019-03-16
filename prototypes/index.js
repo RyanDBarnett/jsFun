@@ -378,8 +378,13 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return breweries.reduce(function(result, brewery) {
+      const breweryBeerCount = {};
+      breweryBeerCount.name = brewery.name;
+      breweryBeerCount.beerCount = brewery.beers.length;
+      result.push(breweryBeerCount);
+      return result;
+    },[]); 
 
     // Annotation:
     // Write your annotation here as a comment
