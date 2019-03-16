@@ -362,7 +362,7 @@ describe("PROTOTYPES", () => {
         lightYearsFromEarth: 640,
         color: "red"
       }])
-    }), it.skip("starsByColor", () => {
+    }), it("starsByColor", () => {
       const e = astronomyPrompts.starsByColor();
       expect(e).to.deep.equal({
         blue: [{

@@ -659,9 +659,10 @@ const astronomyPrompts = {
     //   orange: [{obj}],
     //   red: [{obj}]
     // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return stars.reduce(function(result, star) {
+      result[star.color] ? result[star.color].push(star) : result[star.color] = [star];
+      return result;
+    },{});
 
     // Annotation:
     // Write your annotation here as a comment
