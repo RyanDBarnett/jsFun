@@ -789,14 +789,17 @@ const scope = {
         lunch = 'soup';
       }
 
-      // Log B: lunch
+      // Log B: lunch // 1st soup
     }
 
     orderLunch();
 
-    // Log C: lunch
+    // Log C: lunch // 2nd soup
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { B: 'soup'},
+      { C: 'soup'}
+    ];
     return result;
 
     // Annotation:
