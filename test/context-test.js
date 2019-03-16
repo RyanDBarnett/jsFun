@@ -25,10 +25,10 @@ describe("CONTEXT", () => {
   }), it("exerciseB", () => {
     const e = "global window object" == context.exerciseB();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseC", () => {
+  }), it("exerciseC", () => {
     const e = "el" == context.exerciseC();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseD", () => {
+  }), it("exerciseD", () => {
     const e = "global window object" == context.exerciseD();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   }), it.skip("exerciseE", () => {

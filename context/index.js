@@ -52,11 +52,11 @@ const context = {
     el.addEventListener('click', car.getInfo);
 
     // What is the value of `this` when a user clicks on our element and car.getInfo() is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'el';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // When you have an event listener the value of this inside the callback function refers to the element that the event listener is attached to.
   },
 
   exerciseD() {
@@ -65,7 +65,7 @@ const context = {
       getBreed: function(){
 
         const innerFunction = function() {
-          console.log(this.breed);
+          console.log(this);
         };
     
         return innerFunction;
@@ -73,6 +73,7 @@ const context = {
     };
 
     var breed = dog.getBreed();
+    console.log(breed());
 
     // What is the value of `this` when we call breed()?
     const result = 'REPLACE WITH YOUR RESULT HERE';
