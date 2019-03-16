@@ -681,22 +681,27 @@ const scope = {
     var num = 5;
 
     function first() {
-      // Log A: num
+      // Log A: num // 1st 5
       num = 6;
-      // Log B: num
+      // Log B: num // 2nd 6
     }
 
     function second() {
-      // Log C: num
+      // Log C: num // 3rd reference error
       let num = 7;
     }
 
     first();
     second();
 
-    // Log D: num
+    // Log D: num // 4th 6
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 5},
+      { B: 6},
+      { C: 'reference error'},
+      { D: 6}
+    ];
     return result;
 
     // Annotation:
@@ -708,7 +713,7 @@ const scope = {
 
     function changeInstructor() {
 
-      // Log A: instructor
+      // Log A: instructor // 2nd Pam
 
       if (instructor === 'Brittany') {
         const instructor = 'Nathaniel';
@@ -716,26 +721,33 @@ const scope = {
         let instructor = 'Brittany';
       }
 
-      // Log B: instructor
+      // Log B: instructor // 3rd Pam
 
       function rename() {
         instructor = 'Louisa';
-        // Log C: instructor
+        // Log C: instructor // 4th Louisa
       }
 
       rename();
 
-      // Log D: instructor
+      // Log D: instructor // 5th Louisa
 
     }
 
-    // Log E: instructor
+    // Log E: instructor // 1st Pam
 
     changeInstructor();
 
-    // Log F: instructor
+    // Log F: instructor // 6th Louisa
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { E: 'Pam'},
+      { A: 'Pam'},
+      { B: 'Pam'},
+      { C: 'Louisa'},
+      { D: 'Louisa'},
+      { F: 'Louisa'}
+    ];
     return result;
 
     // Annotation:
@@ -746,15 +758,19 @@ const scope = {
     var shoe = 'flipflop';
 
     function putOnShoe() {
-      // Log A: shoe
+      // Log A: shoe // 2nd undefined
       var shoe = 'boot';
     }
 
-    // Log B: shoe
+    // Log B: shoe // 1st flipflop
     putOnShoe();
-    // Log C: shoe
+    // Log C: shoe // 3rd flipflop
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { B: 'flipflop'},
+      { A: undefined},
+      { C: 'flipflop'}
+    ];
     return result;
 
     // Annotation:
@@ -773,14 +789,17 @@ const scope = {
         lunch = 'soup';
       }
 
-      // Log B: lunch
+      // Log B: lunch // 1st soup
     }
 
     orderLunch();
 
-    // Log C: lunch
+    // Log C: lunch // 2nd soup
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { B: 'soup'},
+      { C: 'soup'}
+    ];
     return result;
 
     // Annotation:
@@ -792,13 +811,13 @@ const scope = {
     let wildKids = ['Antigone'];
 
     let myCrazyKidAntics = kid => {
-      // Log A: kid
+      // Log A: kid // 1st Pandora
       wildKids.push(kid);
-      // Log B: wildKids
+      // Log B: wildKids // 2nd ['Antigone','Pandora']
   
       let drawOnTheWall = () => {
         let myKid = 'Mandy';
-        // Log C: myKid
+        // Log C: myKid // 3rd Mandy
         return `That wild kid ${myKid}, drew on the wall!`;
       };
 
@@ -806,18 +825,24 @@ const scope = {
 
       let myAmazingKid = () => {
         let myKid = wildKids.shift();
-        // Log D: myKid
+        // Log D: myKid // 4th Antigone
         return `That kid ${myKid}, is AMAZING!`;
       };
 
       myAmazingKid();
-      // Log E: myKid;
+      // Log E: myKid; // 5th Pandora
       return `All these kids are wild, especially, ${myKid}!`;
     };
 
     myCrazyKidAntics(myKid);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'Pandora'},
+      { B: ['Antigone','Pandora']},
+      { C: 'Mandy'},
+      { D: 'Antigone'},
+      { E: 'Pandora'}
+    ];
     return result;
 
     // Annotation:
@@ -826,15 +851,15 @@ const scope = {
 
   exerciseR() {
     let myName = 'Rody';
-    // Log A: myName
+    // Log A: myName // 1st Rody
 
     const parentFunc = () => {
       myName += 'Toy';
-      // Log B: myName
+      // Log B: myName // 2nd RodyToy
 
       let innerFunc = () => {
         let myName = 'Tesla'; 
-        // Log C: myName
+        // Log C: myName // 3rd Tesla
       };
 
       innerFunc();
@@ -842,9 +867,14 @@ const scope = {
     };
 
     parentFunc();
-    // Log D: myName
+    // Log D: myName // 4th RodyToyDaniels
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'Rody'},
+      { B: 'RodyToy'},
+      { C: 'Tesla'},
+      { D: 'RodyToyDaniels'}
+    ];
     return result;
 
     // Annotation:
