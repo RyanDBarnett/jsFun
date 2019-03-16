@@ -206,7 +206,7 @@ describe("SCOPE", () => {
       E: "Pandora"
     }]);
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
-  }), it.skip("exerciseR", () => {
+  }), it("exerciseR", () => {
     const e = JSON.stringify(scope.exerciseR()) == JSON.stringify([{
       A: "Rody"
     }, {

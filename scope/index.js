@@ -851,15 +851,15 @@ const scope = {
 
   exerciseR() {
     let myName = 'Rody';
-    // Log A: myName
+    // Log A: myName // 1st Rody
 
     const parentFunc = () => {
       myName += 'Toy';
-      // Log B: myName
+      // Log B: myName // 2nd RodyToy
 
       let innerFunc = () => {
         let myName = 'Tesla'; 
-        // Log C: myName
+        // Log C: myName // 3rd Tesla
       };
 
       innerFunc();
@@ -867,9 +867,14 @@ const scope = {
     };
 
     parentFunc();
-    // Log D: myName
+    // Log D: myName // 4th RodyToyDaniels
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'Rody'},
+      { B: 'RodyToy'},
+      { C: 'Tesla'},
+      { D: 'RodyToyDaniels'}
+    ];
     return result;
 
     // Annotation:
