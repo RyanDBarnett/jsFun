@@ -182,8 +182,13 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return cakes.reduce(function(result, cake) {
+      let newCake = {};
+      newCake.flavor = cake.cakeFlavor;
+      newCake.inStock = cake.inStock;
+      result.push(newCake);
+      return result;
+    }, []);
 
     // Annotation:
     // Write your annotation here as a comment
