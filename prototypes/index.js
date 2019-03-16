@@ -573,10 +573,28 @@ const bossPrompts = {
     //   { bossName: 'Ursula', sidekickLoyalty: 20 },
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
+    const results = [];
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    for (boss in bosses) {
+      const obj = {};
+      obj.bossName = capitalize(boss);
+      obj.sidekickLoyalty = 0;
+      results.push(obj);
+    }
 
+    function capitalize(word) {
+      return word[0].toUpperCase() + word.substr(1);
+    }
+
+    sidekicks.forEach(function(sidekick) {
+      const matchingBoss = results.find(function(result) {
+        return result.bossName === sidekick.boss;
+      });
+      matchingBoss.sidekickLoyalty += sidekick.loyaltyToBoss;
+    });
+
+    return results;
+    
     // Annotation:
     // Write your annotation here as a comment
   }
