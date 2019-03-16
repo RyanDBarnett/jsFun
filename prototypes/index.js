@@ -93,8 +93,18 @@ const clubPrompts = {
     //   Pam: ['Drama', 'Art', 'Chess'],
     //   ...etc
     // }
+    const result = {};
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    clubs.forEach(function(clubObj) {
+      let clubName = clubObj.club;
+      clubObj.members.forEach(function(member) {
+        if (result[member]) {
+          result[member].push(clubName);
+        } else {
+          result[member] = [clubName];
+        }
+      });
+    });
     return result;
 
     // Annotation:
