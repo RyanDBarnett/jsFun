@@ -24,13 +24,12 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = kitties.reduce( (names, cat) => {
+    return result = kitties.reduce( (names, cat) => {
       if (cat.color === 'orange') {
         names.push(cat.name);
       }
       return names;
     }, []);
-    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -39,8 +38,9 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return result = kitties.sort(function(catA, catB) {
+      return catA.age < catB.age;
+    });
 
     // Annotation:
     // Write your annotation here as a comment
