@@ -681,22 +681,27 @@ const scope = {
     var num = 5;
 
     function first() {
-      // Log A: num
+      // Log A: num // 1st 5
       num = 6;
-      // Log B: num
+      // Log B: num // 2nd 6
     }
 
     function second() {
-      // Log C: num
+      // Log C: num // 3rd reference error
       let num = 7;
     }
 
     first();
     second();
 
-    // Log D: num
+    // Log D: num // 4th 6
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 5},
+      { B: 6},
+      { C: 'reference error'},
+      { D: 6}
+    ];
     return result;
 
     // Annotation:
