@@ -394,8 +394,18 @@ const breweryPrompts = {
     // Return the beer which has the highest ABV of all beers
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
+    let highestABV = 0;
+    let result = {};
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    breweries.forEach(function(brewery) {
+      brewery.beers.forEach(function(beer) {
+        if(beer.abv > highestABV) {
+          highestABV = beer.abv;
+          result = beer;
+        }
+      });
+    });
+    
     return result;
 
     // Annotation:
