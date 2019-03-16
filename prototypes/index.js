@@ -60,10 +60,10 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    kitties.forEach(function(cat) {
+    return kitties.map(function(cat) {
       cat.age = cat.age + 2;
     });
-    return kitties;
+
   }
 };
 
@@ -95,16 +95,13 @@ const clubPrompts = {
     // }
     const result = {};
 
-    clubs.forEach(function(clubObj) {
-      let clubName = clubObj.club;
-      clubObj.members.forEach(function(member) {
-        if (result[member]) {
-          result[member].push(clubName);
-        } else {
-          result[member] = [clubName];
-        }
+    clubs.forEach( obj => {
+      let clubName = obj.club;
+      obj.members.forEach( member => {
+        result[member] ? result[member].push(obj.club) : result[member] = [clubName];
       });
     });
+    
     return result;
 
     // Annotation:
@@ -497,7 +494,7 @@ const turingPrompts = {
     //     Brittany: [2, 4],
     //     Nathaniel: [2, 4],
     //     Robbie: [4],
-    //     Leta: [4, 2],
+    //     Leta: [2, 4],
     //     Travis: [1, 2, 3, 4],
     //     Louisa: [1, 2, 3, 4],
     //     Christie: [1, 2, 3, 4],
@@ -645,16 +642,18 @@ const astronomyPrompts = {
 
   constellationsStarsExistIn() {
     // Return an array of the names of the constellations that the brightest stars are part of e.g.
-    // [ 'Canis Major',
-    //   'Carina',
-    //   'Boötes',
-    //   'Lyra',
-    //   'Auriga',
-    //   'Orion',
-    //   'Canis Minor',
-    //   'Eridanus',
-    //   'Orion',
-    //   'Centaurus' ]
+    
+    //  [ "Canis Major",
+    //    "Carina",
+    //    "Boötes",
+    //    "Auriga",
+    //    "Orion",
+    //    "Lyra", 
+    //    "Canis Minor", 
+    //    "The Plow", 
+    //    "Orion", 
+    //    "The Little Dipper" ]
+
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -781,11 +780,25 @@ const dinosaurPrompts = {
     Return an array of objects that contain the names of humans who have not been cast in a Jurassic Park movie (yet), their nationality, and their imdbStarMeterRating. The object in the array should be sorted alphabetically by nationality.
 
     e.g.
-
-    [ { name: 'Justin Duncan', nationality: 'Alien', imdbStarMeterRating: 0 },
-      { name: 'Tom Wilhoit', nationality: 'Kiwi', imdbStarMeterRating: 1 },
-      { name: 'Jeo D', nationality: 'Martian', imdbStarMeterRating: 0 },
-      { name: 'Karin Ohman', nationality: 'Swedish', imdbStarMeterRating: 0 } ]
+      [{
+        name: 'Justin Duncan',
+        nationality: 'Alien',
+        imdbStarMeterRating: 0
+      }, 
+      {
+        name: 'Karin Ohman',
+        nationality: 'Chinese',
+        imdbStarMeterRating: 0
+      },
+      {
+        name: 'Tom Wilhoit',
+        nationality: 'Kiwi',
+        imdbStarMeterRating: 1
+      }, {
+        name: 'Jeo D',
+        nationality: 'Martian',
+        imdbStarMeterRating: 0
+      }]
     */
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
