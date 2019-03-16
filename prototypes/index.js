@@ -594,7 +594,7 @@ const bossPrompts = {
     });
 
     return results;
-    
+
     // Annotation:
     // Write your annotation here as a comment
   }
@@ -633,9 +633,17 @@ const astronomyPrompts = {
     //     lightYearsFromEarth: 640,
     //     color: 'red' }
     // ]
+    
+    const constellationStars = [];
+    for (constellation in constellations) {
+      constellations[constellation].stars.forEach(function(star) {
+        constellationStars.push(star);
+      });
+    }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return stars.filter(function(star) {
+      return constellationStars.includes(star.name);
+    });
 
     // Annotation:
     // Write your annotation here as a comment
