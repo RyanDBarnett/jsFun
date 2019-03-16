@@ -509,7 +509,7 @@ const turingPrompts = {
             qualifiedMods.push(cohort.module);
           }
         });
-        return qualifiedMods; 
+        return qualifiedMods;
       }, []);
       return result;
     }, {});
@@ -681,9 +681,19 @@ const astronomyPrompts = {
     //    "The Plow", 
     //    "Orion", 
     //    "The Little Dipper" ]
+    const starsWithConstellation = stars.filter(function(star) {
+      return star.constellation;
+    });
+    
+    const starsByBrightness = starsWithConstellation.sort(function(starA, starB) {
+      return starA.visualMagnitude > starB.visualMagnitude;
+    });
 
+    const result = starsByBrightness.reduce(function(brightestConstellations, star) {
+      brightestConstellations.push(star.constellation);
+      return brightestConstellations;
+    },[]);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
