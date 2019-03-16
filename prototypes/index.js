@@ -452,9 +452,18 @@ const turingPrompts = {
     //  { name: 'Pam', studentCount: 21 },
     //  { name: 'Robbie', studentCount: 18 }
     // ]
+    // const result = [];
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return instructors.reduce(function(result, instructor) {
+      const obj = {};
+      const instructorsCohort = cohorts.find(function(cohort) {
+        return cohort.module === instructor.module;
+      });
+      obj.name = instructor.name;
+      obj.studentCount = instructorsCohort.studentCount;
+      result.push(obj);
+      return result;
+    }, []);
 
     // Annotation:
     // Write your annotation here as a comment
@@ -467,8 +476,14 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return cohorts.reduce(function(result, cohortObj) {
+      const cohortInstructors = instructors.filter(function(instructor) {
+        return instructor.module === cohortObj.module;
+      });
+      const numCohortInstructors = cohortInstructors.length;
+      result[`cohort${cohortObj.cohort}`] = cohortObj.studentCount / numCohortInstructors;
+      return result;
+    }, {});
 
     // Annotation:
     // Write your annotation here as a comment
