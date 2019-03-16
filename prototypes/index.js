@@ -361,8 +361,9 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return breweries.reduce(function(beerCount, brewery) {
+      return beerCount += brewery.beers.length;
+    }, 0);
 
     // Annotation:
     // Write your annotation here as a comment
