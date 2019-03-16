@@ -62,6 +62,7 @@ const kittyPrompts = {
 
     return kitties.map(function(cat) {
       cat.age = cat.age + 2;
+      return cat;
     });
 
   }
