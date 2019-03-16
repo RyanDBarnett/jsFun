@@ -241,8 +241,14 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return cakes.reduce(function(uniqueToppings, cake) {
+      cake.toppings.forEach(function(topping) {
+        if (!uniqueToppings.includes(topping)) {
+          uniqueToppings.push(topping);
+        }
+      });
+      return uniqueToppings;
+    },[]);
 
     // Annotation:
     // Write your annotation here as a comment
