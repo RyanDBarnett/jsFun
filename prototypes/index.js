@@ -24,13 +24,12 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = kitties.reduce( (names, cat) => {
+    return kitties.reduce( (names, cat) => {
       if (cat.color === 'orange') {
         names.push(cat.name);
       }
       return names;
     }, []);
-    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -39,11 +38,9 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = kitties.sort( (catA, catB) => {
+    return kitties.sort(function(catA, catB) {
       return catA.age < catB.age;
     });
-
-    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -63,21 +60,10 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    function growUp(cat) {
+    return kitties.map(function(cat) {
       cat.age = cat.age + 2;
-      return cat;
-    }
+    });
 
-    const result = kitties.map(growUp);
-
-    // const result = kitties.reduce( (cats, cat) => {
-    //   cat.age = cat.age + 2;
-    //   cats.push(cat);
-    //   console.log(cats);
-    //   return cats;
-    // }, []);
-
-    return result;
   }
 };
 
@@ -107,7 +93,7 @@ const clubPrompts = {
     //   Pam: ['Drama', 'Art', 'Chess'],
     //   ...etc
     // }
-    let result = {};
+    const result = {};
 
     clubs.forEach( obj => {
       let clubName = obj.club;
@@ -115,7 +101,7 @@ const clubPrompts = {
         result[member] ? result[member].push(obj.club) : result[member] = [clubName];
       });
     });
-
+    
     return result;
 
     // Annotation:
@@ -150,9 +136,16 @@ const modPrompts = {
     //   { mod: 3, studentsPerInstructor: 10 },
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
+    return mods.reduce(function(result, modObj) {
+      let newModObj = {};
+      newModObj.mod = modObj.mod;
+      newModObj.studentsPerInstructor = modObj.students / modObj.instructors;
+      result.push(newModObj);
+      return result;
+    },[]);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    // const result = 'REPLACE WITH YOUR RESULT HERE';
+    // return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -186,8 +179,13 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return cakes.reduce(function(result, cake) {
+      let newCake = {};
+      newCake.flavor = cake.cakeFlavor;
+      newCake.inStock = cake.inStock;
+      result.push(newCake);
+      return result;
+    }, []);
 
     // Annotation:
     // Write your annotation here as a comment
@@ -213,9 +211,12 @@ const cakePrompts = {
     // },
     // ..etc
     // ]
+    return cakes.filter(function(cake) {
+      return cake.inStock;
+    });
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    // const result = 'REPLACE WITH YOUR RESULT HERE';
+    // return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -224,9 +225,9 @@ const cakePrompts = {
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return cakes.reduce(function(totalCakes, cake) {
+      return totalCakes += cake.inStock;
+    }, 0);
 
     // Annotation:
     // Write your annotation here as a comment
@@ -237,8 +238,14 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return cakes.reduce(function(uniqueToppings, cake) {
+      cake.toppings.forEach(function(topping) {
+        if (!uniqueToppings.includes(topping)) {
+          uniqueToppings.push(topping);
+        }
+      });
+      return uniqueToppings;
+    },[]);
 
     // Annotation:
     // Write your annotation here as a comment
@@ -255,8 +262,12 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return cakes.reduce(function(groceryList, cake) {
+      cake.toppings.forEach(function(topping) {
+        groceryList[topping] ? groceryList[topping]++ : groceryList[topping] = 1;
+      });
+      return groceryList;
+    }, {});
 
     // Annotation:
     // Write your annotation here as a comment
@@ -289,9 +300,9 @@ const classPrompts = {
     //   { roomLetter: 'E', program: 'FE', capacity: 22 },
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return classrooms.filter(function(classroom) {
+      return classroom.program === 'FE';
+    });
 
     // Annotation:
     // Write your annotation here as a comment
@@ -304,9 +315,11 @@ const classPrompts = {
     //   feCapacity: 110,
     //   beCapacity: 96
     // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return classrooms.reduce(function(total, classroom) {
+      let cap = classroom.capacity;
+      classroom.program === 'FE' ? total.feCapacity += cap : total.beCapacity += cap;
+      return total;
+    }, {feCapacity: 0, beCapacity: 0});
 
     // Annotation:
     // Write your annotation here as a comment
@@ -314,9 +327,9 @@ const classPrompts = {
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return classrooms.sort(function(roomA, roomB) {
+      return roomA.capacity > roomB.capacity;
+    });
 
     // Annotation:
     // Write your annotation here as a comment
@@ -345,8 +358,9 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return breweries.reduce(function(beerCount, brewery) {
+      return beerCount += brewery.beers.length;
+    }, 0);
 
     // Annotation:
     // Write your annotation here as a comment
@@ -361,8 +375,13 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return breweries.reduce(function(result, brewery) {
+      const breweryBeerCount = {};
+      breweryBeerCount.name = brewery.name;
+      breweryBeerCount.beerCount = brewery.beers.length;
+      result.push(breweryBeerCount);
+      return result;
+    },[]); 
 
     // Annotation:
     // Write your annotation here as a comment
@@ -372,8 +391,18 @@ const breweryPrompts = {
     // Return the beer which has the highest ABV of all beers
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
+    let highestABV = 0;
+    let result = {};
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    breweries.forEach(function(brewery) {
+      brewery.beers.forEach(function(beer) {
+        if(beer.abv > highestABV) {
+          highestABV = beer.abv;
+          result = beer;
+        }
+      });
+    });
+    
     return result;
 
     // Annotation:
@@ -420,9 +449,18 @@ const turingPrompts = {
     //  { name: 'Pam', studentCount: 21 },
     //  { name: 'Robbie', studentCount: 18 }
     // ]
+    // const result = [];
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return instructors.reduce(function(result, instructor) {
+      const obj = {};
+      const instructorsCohort = cohorts.find(function(cohort) {
+        return cohort.module === instructor.module;
+      });
+      obj.name = instructor.name;
+      obj.studentCount = instructorsCohort.studentCount;
+      result.push(obj);
+      return result;
+    }, []);
 
     // Annotation:
     // Write your annotation here as a comment
@@ -435,8 +473,14 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return cohorts.reduce(function(result, cohortObj) {
+      const cohortInstructors = instructors.filter(function(instructor) {
+        return instructor.module === cohortObj.module;
+      });
+      const numCohortInstructors = cohortInstructors.length;
+      result[`cohort${cohortObj.cohort}`] = cohortObj.studentCount / numCohortInstructors;
+      return result;
+    }, {});
 
     // Annotation:
     // Write your annotation here as a comment
@@ -457,8 +501,17 @@ const turingPrompts = {
     //     Will: [1, 2, 3, 4]
     //   }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return instructors.reduce(function(result, instructor) {
+      result[instructor.name] = cohorts.reduce(function(qualifiedMods, cohort) {
+        instructor.teaches.forEach(function (skill) {
+          if(cohort.curriculum.includes(skill) && !qualifiedMods.includes(cohort.module)) {
+            qualifiedMods.push(cohort.module);
+          }
+        });
+        return qualifiedMods; 
+      }, []);
+      return result;
+    }, {});
 
     // Annotation:
     // Write your annotation here as a comment
@@ -474,8 +527,19 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return cohorts.reduce(function(result, cohort) {
+      cohort.curriculum.forEach(function(topic) {
+        if(!result[topic]) {
+          result[topic] = [];
+        }
+        instructors.forEach(function(instructor) {
+          if(instructor.teaches.includes(topic) && !result[topic].includes(instructor.name)) {
+            result[topic].push(instructor.name);
+          }
+        });
+      });
+      return result;
+    }, {});
 
     // Annotation:
     // Write your annotation here as a comment
