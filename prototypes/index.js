@@ -265,8 +265,12 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return cakes.reduce(function(groceryList, cake) {
+      cake.toppings.forEach(function(topping) {
+        groceryList[topping] ? groceryList[topping]++ : groceryList[topping] = 1;
+      });
+      return groceryList;
+    }, {});
 
     // Annotation:
     // Write your annotation here as a comment
