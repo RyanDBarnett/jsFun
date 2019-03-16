@@ -758,15 +758,19 @@ const scope = {
     var shoe = 'flipflop';
 
     function putOnShoe() {
-      // Log A: shoe
+      // Log A: shoe // 2nd undefined
       var shoe = 'boot';
     }
 
-    // Log B: shoe
+    // Log B: shoe // 1st flipflop
     putOnShoe();
-    // Log C: shoe
+    // Log C: shoe // 3rd flipflop
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { B: 'flipflop'},
+      { A: undefined},
+      { C: 'flipflop'}
+    ];
     return result;
 
     // Annotation:

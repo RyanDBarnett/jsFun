@@ -177,7 +177,7 @@ describe("SCOPE", () => {
       F: "Louisa"
     }]);
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
-  }), it.skip("exerciseO", () => {
+  }), it("exerciseO", () => {
     const e = JSON.stringify(scope.exerciseO()) == JSON.stringify([{
       B: "flipflop"
     }, {
