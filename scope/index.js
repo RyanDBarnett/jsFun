@@ -713,7 +713,7 @@ const scope = {
 
     function changeInstructor() {
 
-      // Log A: instructor
+      // Log A: instructor // 2nd Pam
 
       if (instructor === 'Brittany') {
         const instructor = 'Nathaniel';
@@ -721,26 +721,33 @@ const scope = {
         let instructor = 'Brittany';
       }
 
-      // Log B: instructor
+      // Log B: instructor // 3rd Pam
 
       function rename() {
         instructor = 'Louisa';
-        // Log C: instructor
+        // Log C: instructor // 4th Louisa
       }
 
       rename();
 
-      // Log D: instructor
+      // Log D: instructor // 5th Louisa
 
     }
 
-    // Log E: instructor
+    // Log E: instructor // 1st Pam
 
     changeInstructor();
 
-    // Log F: instructor
+    // Log F: instructor // 6th Louisa
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { E: 'Pam'},
+      { A: 'Pam'},
+      { B: 'Pam'},
+      { C: 'Louisa'},
+      { D: 'Louisa'},
+      { F: 'Louisa'}
+    ];
     return result;
 
     // Annotation:
