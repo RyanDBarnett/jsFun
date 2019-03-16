@@ -43,7 +43,7 @@ describe("CONTEXT", () => {
   }), it("exerciseH", () => {
     const e = "obj" == context.exerciseH();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseI", () => {
+  }), it("exerciseI", () => {
     const e = "poets" == context.exerciseI();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   }), it.skip("exerciseJ", () => {
