@@ -811,13 +811,13 @@ const scope = {
     let wildKids = ['Antigone'];
 
     let myCrazyKidAntics = kid => {
-      // Log A: kid
+      // Log A: kid // 1st Pandora
       wildKids.push(kid);
-      // Log B: wildKids
+      // Log B: wildKids // 2nd ['Antigone','Pandora']
   
       let drawOnTheWall = () => {
         let myKid = 'Mandy';
-        // Log C: myKid
+        // Log C: myKid // 3rd Mandy
         return `That wild kid ${myKid}, drew on the wall!`;
       };
 
@@ -825,18 +825,24 @@ const scope = {
 
       let myAmazingKid = () => {
         let myKid = wildKids.shift();
-        // Log D: myKid
+        // Log D: myKid // 4th Antigone
         return `That kid ${myKid}, is AMAZING!`;
       };
 
       myAmazingKid();
-      // Log E: myKid;
+      // Log E: myKid; // 5th Pandora
       return `All these kids are wild, especially, ${myKid}!`;
     };
 
     myCrazyKidAntics(myKid);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'Pandora'},
+      { B: ['Antigone','Pandora']},
+      { C: 'Mandy'},
+      { D: 'Antigone'},
+      { E: 'Pandora'}
+    ];
     return result;
 
     // Annotation:
