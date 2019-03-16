@@ -504,8 +504,17 @@ const turingPrompts = {
     //     Will: [1, 2, 3, 4]
     //   }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return instructors.reduce(function(result, instructor) {
+      result[instructor.name] = cohorts.reduce(function(qualifiedMods, cohort) {
+        instructor.teaches.forEach(function (skill) {
+          if(cohort.curriculum.includes(skill) && !qualifiedMods.includes(cohort.module)) {
+            qualifiedMods.push(cohort.module);
+          }
+        });
+        return qualifiedMods; 
+      }, []);
+      return result;
+    }, {});
 
     // Annotation:
     // Write your annotation here as a comment
