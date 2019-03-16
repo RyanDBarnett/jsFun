@@ -5,6 +5,7 @@ const context = {
     };
 
     class SpaceProbe {
+      
       constructor(title, classification) {
         this.title = title;
         this.classification = classification;
@@ -14,27 +15,29 @@ const context = {
 
     const ship = new SpaceProbe('voyager', 'classy');
 
-
     // What is the value of `this` when we call ship.fly()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Because the function expression fly is declared in the global scope using an ES6 arrow function the value of this is set when the function is declared.
+    // Since fly is declared in the global scope this refers to the global window object
+    // If an ES5 function declaration was used instead of a ES6 arrow function then the value of this would be set when the function is executed/invoked
+    // And then this would refer to the ship instance
   },
 
   exerciseB() {
     function fn() {
-      const value = 2;
       return this.value;
+      //const value = 2;
     }
     
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // When we invoke fn() this is referring to the global window object
   },
 
   exerciseC() {
@@ -49,11 +52,11 @@ const context = {
     el.addEventListener('click', car.getInfo);
 
     // What is the value of `this` when a user clicks on our element and car.getInfo() is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'el';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // When you have an event listener the value of this inside the callback function refers to the element that the event listener is attached to.
   },
 
   exerciseD() {
@@ -62,7 +65,7 @@ const context = {
       getBreed: function(){
 
         const innerFunction = function() {
-          console.log(this.breed);
+          console.log(this);
         };
     
         return innerFunction;
@@ -72,7 +75,7 @@ const context = {
     var breed = dog.getBreed();
 
     // What is the value of `this` when we call breed()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
@@ -88,7 +91,7 @@ const context = {
 
 
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
@@ -111,7 +114,7 @@ const context = {
     const storm = new Hero('Ororo', 'weather control', true);
 
     // What is the value of `this` when we call storm.identifyHero()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'instance of Hero';
     return result;
 
     // Annotation: 
@@ -139,7 +142,7 @@ const context = {
 
 
     // What is the value of `this` when we call monopoly.restart()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
@@ -159,7 +162,7 @@ const context = {
     obj.method();
 
     // What is the value of `this` when we call obj.arrowFunction()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'obj';
     return result;
 
     // Annotation: 
@@ -182,7 +185,7 @@ const context = {
     }, poets);
 
     // What is the value of `this` that gets returned on each iteration of poets.map()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'poets';
     return result;
 
     // Annotation: 
@@ -196,7 +199,7 @@ const context = {
     });
 
     // What is the value of `this` when a user clicks on our #btn element and the callback is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'el';
     return result;
 
     // Annotation: 
