@@ -37,10 +37,10 @@ describe("CONTEXT", () => {
   }), it("exerciseF", () => {
     const e = "instance of Hero" == context.exerciseF();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseG", () => {
+  }), it("exerciseG", () => {
     const e = "global window object" == context.exerciseG();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseH", () => {
+  }), it("exerciseH", () => {
     const e = "obj" == context.exerciseH();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   }), it.skip("exerciseI", () => {
