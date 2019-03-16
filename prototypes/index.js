@@ -60,8 +60,10 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    kitties.forEach(function(cat) {
+      cat.age = cat.age + 2;
+    });
+    return kitties;
   }
 };
 
