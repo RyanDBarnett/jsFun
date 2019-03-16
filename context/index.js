@@ -29,7 +29,7 @@ const context = {
   exerciseB() {
     function fn() {
       return this.value;
-      const value = 2;
+      //const value = 2;
     }
     
     // What is the value of `this` when we call fn()?
@@ -91,7 +91,7 @@ const context = {
 
 
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 

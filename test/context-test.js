@@ -31,7 +31,7 @@ describe("CONTEXT", () => {
   }), it("exerciseD", () => {
     const e = "global window object" == context.exerciseD();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseE", () => {
+  }), it("exerciseE", () => {
     const e = "global window object" == context.exerciseE();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   }), it.skip("exerciseF", () => {
