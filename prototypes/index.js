@@ -228,9 +228,9 @@ const cakePrompts = {
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return cakes.reduce(function(totalCakes, cake) {
+      return totalCakes += cake.inStock;
+    }, 0);
 
     // Annotation:
     // Write your annotation here as a comment
