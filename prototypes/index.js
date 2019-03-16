@@ -530,8 +530,19 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return cohorts.reduce(function(result, cohort) {
+      cohort.curriculum.forEach(function(topic) {
+        if(!result[topic]) {
+          result[topic] = [];
+        }
+        instructors.forEach(function(instructor) {
+          if(instructor.teaches.includes(topic) && !result[topic].includes(instructor.name)) {
+            result[topic].push(instructor.name);
+          }
+        });
+      });
+      return result;
+    }, {});
 
     // Annotation:
     // Write your annotation here as a comment
