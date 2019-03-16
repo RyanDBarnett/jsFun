@@ -786,9 +786,16 @@ const dinosaurPrompts = {
     //   'Jurassic World': 11,
     //   'Jurassic World: Fallen Kingdom': 18
     // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    // console.log(dinosaurs);
+    return movies.reduce(function(result, movie) {
+      result[movie.title] = 0;
+      for(dino in dinosaurs) {
+        if(movie.dinos.includes(dino) && dinosaurs[dino].isAwesome) {
+          result[movie.title] += 1;
+        }
+      }
+      return result;
+    },{});
 
     // Annotation:
     // Write your annotation here as a comment
