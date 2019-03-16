@@ -303,9 +303,9 @@ const classPrompts = {
     //   { roomLetter: 'E', program: 'FE', capacity: 22 },
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return classrooms.filter(function(classroom) {
+      return classroom.program === 'FE';
+    });
 
     // Annotation:
     // Write your annotation here as a comment
@@ -318,9 +318,11 @@ const classPrompts = {
     //   feCapacity: 110,
     //   beCapacity: 96
     // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return classrooms.reduce(function(total, classroom) {
+      let cap = classroom.capacity;
+      classroom.program === 'FE' ? total.feCapacity += cap : total.beCapacity += cap;
+      return total;
+    }, {feCapacity: 0, beCapacity: 0});
 
     // Annotation:
     // Write your annotation here as a comment
