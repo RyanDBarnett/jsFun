@@ -827,8 +827,21 @@ const dinosaurPrompts = {
       }
     */
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return movies.reduce(function(result, movie) {
+      result[movie.director] = result[movie.director] || {};
+      const combinedAge = movie.cast.reduce(function(sum, actor) {
+        for(human in humans) {
+          if(actor === human) {
+            sum += movie.yearReleased - humans[human].yearBorn;
+          }
+        }
+        return sum;
+      }, 0);
+
+      const averageAgeOfCast = Math.floor(combinedAge / movie.cast.length);
+      result[movie.director][movie.title] = averageAgeOfCast;
+      return result;
+    },{});
 
     // Annotation:
     // Write your annotation here as a comment
