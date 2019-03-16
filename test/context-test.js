@@ -46,7 +46,7 @@ describe("CONTEXT", () => {
   }), it("exerciseI", () => {
     const e = "poets" == context.exerciseI();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseJ", () => {
+  }), it("exerciseJ", () => {
     const e = "el" == context.exerciseJ();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   })
