@@ -674,7 +674,24 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 645, the global variable grade is initialized with the number 100
+    // On line 647, the function losePoints is declared
+    // We then skip down to line 663
+    // On line 665, the function losePoints is invoked
+    // The invocation of losePoints causes us to go back up to line 647
+    // On line 648, the value of the global variable grade is reassigned to the number 90 
+    // On line 650, the function addPoints is declared
+    // We then skip down to line 658
+    // On line 660, the function addPoints is invoked
+    // The invocation of addPoints causes us to go back up to line 650
+    // On line 648, the functional variable grade is initialized with the number 95
+    // On line 653, the if conditional evaluates to true because grade equals 95
+    // On line 654, the block scoped variable grade is initialized with the number 95
+    // On line 657, log A the value of grade is 95
+    // We are now done invoking addPoints so we return to line 660
+    // On line 662, log B the value of grade is 90
+    // We are now done invoking losePoints so we return to line 665
+    // On line 667, log C the value of grade is 90
   },
 
   exerciseM() {
