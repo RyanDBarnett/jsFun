@@ -872,9 +872,29 @@ const dinosaurPrompts = {
         imdbStarMeterRating: 0
       }]
     */
+    const castedActors = movies.reduce(function(castedActors, movie) {
+      movie.cast.forEach(function(actor) {
+        castedActors.push(actor);
+      });
+      return castedActors;
+    },[]);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const notCastedActors = [];
+    console.log(Object.keys(humans));
+    for (human in humans) {
+      if (!castedActors.includes(human)) {
+        notCastedActors.push(humans[human]);
+      }
+    }
+
+    notCastedActors.sort(function(actorA, actorB) {
+      return actorA.nationality > actorB.nationality;
+    });
+
+    return notCastedActors;
+
+    // const result = 'REPLACE WITH YOUR RESULT HERE';
+    // return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -896,8 +916,20 @@ const dinosaurPrompts = {
       { name: 'Bryce Dallas Howard', ages: [ 34, 37 ] } ]
     */
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return Object.keys(humans).reduce(function(result, actorName) {
+      const obj = {};
+      obj.name = actorName;
+      obj.ages = [];
+      movies.forEach(function(movie) {
+        if (movie.cast.includes(actorName)) {
+          obj.ages.push(movie.yearReleased - humans[actorName].yearBorn);
+        }
+      });
+      if(obj.ages.length != 0) {
+        result.push(obj);
+      }
+      return result;
+    }, []);
 
     // Annotation:
     // Write your annotation here as a comment
